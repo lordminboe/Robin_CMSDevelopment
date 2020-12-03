@@ -1,0 +1,77 @@
+query HeroesPageQuery {
+  page(id: "Heroes", idType: URI) {
+    heroesPageMeta {
+      kleineBeschrijving
+      bannersFoto {
+        altText
+      }
+    }
+  }
+}
+
+query HomePageQuery {
+  page(id: "Home Page", idType: URI) {
+    homeMeta {
+      title
+      kleineBeschrijving
+      bannerFoto {
+        altText
+      }
+    }
+  }
+}
+
+query AllHeroesQuery {
+  typeHeroes {
+    edges {
+      node {
+        heroes {
+          nodes {
+            heroesMeta {
+              name
+              heroWins
+              heroType
+              heroDescription
+              gender
+              faction
+              heroFoto {
+                altText
+              }
+            }
+            id
+          }
+        }
+      }
+    }
+  }
+}
+
+
+query GenericHeroQuery {
+  typeHero(id: $id, idType: ID) {
+    heroes {
+      edges {
+        node {
+          heroesMeta {
+            name
+            heroWins
+            heroType
+            heroDescription
+            gender
+            faction
+            heroFoto {
+              altText
+            }
+          }
+          typeHeroes {
+            nodes {
+              name
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+
