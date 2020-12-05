@@ -33,11 +33,11 @@ module.exports = {
       
       options: {
       
-      typeName: "WPGraphQl",
+      typeName: "Wordpress",
       
       fieldName: "wpcontent",
       
-      url: "http://artist-agency.codobi.be/graphql",
+      url: "http://examencmsproject.local/graphql",
       },
       },
     // this (optional) plugin enables Progressive Web App + Offline functionality
