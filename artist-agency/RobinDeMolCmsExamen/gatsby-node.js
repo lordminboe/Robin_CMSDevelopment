@@ -1,39 +1,47 @@
+/**
+ * Implement Gatsby's Node APIs in this file.
+ *
+ * See: https://www.gatsbyjs.com/docs/node-apis/
+ */
+
+// You can delete this file if you're not using it
+
+
+
 const { createRemoteFileNode } = require(`gatsby-source-filesystem`)
 const path = require("path");
-const  {graphql} = require("gatsby");
 
-// exports.createPages = ({graphql, actions}) => {
-// const {createPage} = actions
-// const query = graphql(`
-// {
-// wpcontent{
-//   artists {
-//     edges  {
-//       node  {
-//         slug
-//         id
-//       }
-//     }
-//   }
-// }
-// }
-// `).then(result => {
-//   const artists = result.data.wpcontent.artists.edges;
-//   artists.forEach(artists => {
-//     const {id, slug} = artists.node;
-//     createPage({
 
-//       path: slug,
-//       component:path.resolve('src/templates/artist.js'),
-//       context: {
-//         id,
-//         slug
-//       }
-//     })
-
-//   });
-// })
-// }
+exports.createPages = ({ graphql, actions }) => {
+  const { createPage } = actions
+  return graphql(`
+  {
+    wpcontent {
+      heroes {
+        edges {
+          node {
+            slug
+            id
+          }
+        }
+      }
+    }
+  }
+`).then(result => {
+  const heroes = result.data.wpcontent.heroes.edges;
+  heroes.forEach(heroes => {
+    const {id, slug} = heroes.node;
+    createPage({
+      path: slug,
+      component: path.resolve('src/templates/heroTemplate.js'),
+      context: {
+        id,
+        slug
+      }
+    })
+  });
+})
+}
 
 /* Aan de hand van dit stukje code worden de images vanuit WPgraphql omgezet tot images waarop Gatsby image optimization kan toepassen */
 exports.createResolvers = async ({

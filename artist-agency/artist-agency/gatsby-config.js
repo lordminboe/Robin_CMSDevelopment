@@ -37,7 +37,7 @@ module.exports = {
       
       fieldName: "wpcontent",
       
-      url: "http://artist-agency.codobi.be/graphql",
+      url: "http://examencmsproject.local/graphql",
       
       },
       
